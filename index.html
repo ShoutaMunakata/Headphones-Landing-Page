@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat & Sound around the world</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        .desktop-nav {
+            position: fixed;
+            right: 0;
+            top: 20%; /* Changed from 50% to 20% to move it closer to the top */
+            transform: translateY(-20%); /* Adjusted to match the new top value */
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+        .desktop-nav a {
+            margin: 15px 0;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            padding: 10px 15px 10px 5px;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            position: relative;
+        }
+        .desktop-nav a:hover {
+            color: #333;
+            transform: rotate(180deg) scale(1.1);
+        }
+        .desktop-nav a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background-color: #000;
+            transition: width 0.3s ease, box-shadow 0.3s ease;
+        }
+        .desktop-nav a.active::before {
+            width: 2px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+        }
+        .image-container {
+            position: relative;
+            margin-right: 60px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 767px) {
+            .desktop-nav {
+                display: none;
+            }
+        }
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 20;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        .mobile-nav.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+        }
+        .mobile-nav a {
+            color: #333;
+            font-size: 20px;
+            margin: 15px 0;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .mobile-nav a:hover {
+            color: #000;
+            transform: scale(1.1);
+        }
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .close-menu:hover {
+            color: #000;
+            transform: rotate(90deg);
+        }
+        .mobile-menu-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .mobile-menu-button:hover {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+        .content h1, .content p, .content button, .content .contact-info {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .content.animate h1 {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        .content.animate p {
+            animation: fadeInUp 0.5s ease 0.2s forwards;
+        }
+        .content.animate button {
+            animation: fadeInUp 0.5s ease 0.4s forwards;
+        }
+        .content.animate .contact-info {
+            animation: fadeInUp 0.5s ease 0.6s forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="animate__animated animate__fadeInDown">
+            <div class="logo">Lucas</div>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook" class="animate__animated animate__fadeInRight animate__delay-1s">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="Twitter" class="animate__animated animate__fadeInRight animate__delay-1s">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram" class="animate__animated animate__fadeInRight animate__delay-1s">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                </a>
+            </div>
+            <button class="mobile-menu-button animate__animated animate__fadeInRight animate__delay-1s" aria-label="Toggle menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </header>
+        <main>
+            <div class="content">
+                <h1>Beat & Sound around the world</h1>
+                <p>We provide better solutions for your sounds. The best thing for your business and for your life.</p>
+                <button class="cta-button">SEE MORE</button>
+                <div class="contact-info">
+                    <p>+01 800 25923857</p>
+                    <p>158 Main St, New York NY 10002, USA</p>
+                </div>
+            </div>
+            <div class="image-container animate__animated animate__fadeInRight animate__delay-1s">
+                <img src="https://i.pinimg.com/474x/60/9b/ea/609beaac70e3e8f14e8fc2a26995dff7.jpg" alt="Black wireless headphones" width="400" height="400">
+            </div>
+        </main>
+    </div>
+    <nav class="desktop-nav animate__animated animate__fadeInRight">
+        <a href="#" class="active">Home</a>
+        <a href="#">Products</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    <nav class="mobile-nav">
+        <span class="close-menu">&times;</span>
+        <a href="#" class="active">Home</a>
+        <a href="#">Products</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        // Desktop navigation
+        document.querySelectorAll('.desktop-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.desktop-nav a.active').classList.remove('active');
+                this.classList.add('active');
+            });
+        });
+
+        // Mobile navigation
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const closeMenu = document.querySelector('.close-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            gsap.from('.mobile-nav a', {opacity: 0, y: 50, stagger: 0.1, duration: 0.5, ease: 'power2.out'});
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.mobile-nav a.active').classList.remove('active');
+                this.classList.add('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Animate content on load
+        window.addEventListener('load', () => {
+            document.querySelector('.content').classList.add('animate');
+        });
+
+        // Smooth scroll for desktop nav
+        document.querySelectorAll('.desktop-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    gsap.to(window, {duration: 1, scrollTo: targetElement, ease: 'power2.inOut'});
+                }
+            });
+        });
+    </script>
+</body>
+</html>
